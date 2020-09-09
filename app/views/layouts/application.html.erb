@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head><%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %></head>
+
+        <!-- <div class="container"> -->
+            <div class="row">
+            <div class="col-lg-12" style="background-color: black;">
+    <body>
+      <header>
+
+        <table>
+          <div class="containrt">
+      <div id="slidemenu">
+  <ul>
+    <td><h3>Bookers</h3></td>
+
+    <% if user_signed_in? %>
+<div class="text-rigth">
+      <td class="">
+<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+        <%= link_to 'Home', user_path(current_user) %>
+      </td>
+      <td class="">
+        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+        <%= link_to 'Users', users_path %>
+      </td>
+      <td class="">
+        <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+      <%= link_to 'Books', books_path %>
+      </td>
+       <td class="">
+        <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+        <%= link_to 'logout',destroy_user_session_path, method: :delete %>
+      </td>
+    <% else %>
+     <td class="">
+      <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+      <%= link_to 'Home', root_path %>
+    </td>
+    <td class="">
+      <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
+    <%= link_to 'About', homes_about_path %>
+    </td>
+
+      <td class="">
+        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+        <%= link_to "sing up", new_user_registration_path %>
+      </td>
+      <td class="">
+        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+        <%= link_to "login", new_user_session_path %>
+      </td></p></div>
+    <% end %>
+  </ul>
+  </table>
+
+</header>
+  </div>
+</div>
+
+<!-- </div> -->
+<div class="container">
+<main>
+
+    <%= yield %>
+  </main>
+  </div>
+  </body>
+
+</html>

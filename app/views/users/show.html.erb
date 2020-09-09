@@ -1,0 +1,55 @@
+
+<div class="containar">
+<div class="row">
+	<div class="col-lg-4">
+<h1>User info</h1>
+<%= attachment_image_tag @user, :profile_image,:fill,60,60,format: 'jpeg', fallback: "no_image.jpg" %>
+
+<h4>name</h4>
+<%= @user.name %>
+<h4>introduction</h4>
+<%= @user.introduction %>
+<%= link_to 'New', edit_user_path(@user), class: "btn btn-default" %>
+
+<h1>New book</h1>
+<%= form_for @book do |f| %>
+<h3>Title</h3>
+<%= f.text_field :title %>
+<h3>Opinion</h3>
+<%= f.text_area :body %>
+<h3>
+<%= f.submit 'Create Book' %>
+</h3>
+<% end %>
+	</div>
+	<div class="col-lg-8">
+  <table class="table table-striped">
+	<thead>
+		<h3>Books</h3>
+		<tr><th></th>
+			<th>Title</th>
+			<th>Opinion</th>
+        </tr>
+	</thead>
+
+	<tbody>
+		<% @books.each do |book| %>
+		<tr>
+			<td>
+				<%= attachment_image_tag @user, :profile_image,:fill,60,60,format: 'jpeg', fallback: "no_image.jpg",size: "40x40" %>
+			</td>
+			<td>
+
+				<p><%= link_to book.title,book_path(book.id) %></p>
+			</td>
+			<td>
+				<p><%= book.body %></p>
+				</td>
+			</td>
+	  </tr>
+	  <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
