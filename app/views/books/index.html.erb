@@ -1,28 +1,9 @@
-<div class="containar">
+<div class="container">
 <div class="row">
-	<div class="col-lg-4">
-<h1>User info</h1>
-<%= attachment_image_tag @user, :profile_image,:fill,60,60,format: 'jpeg', fallback: "no_image.jpg" %>
-
-<h4>name</h4>
-<%= @user.name %>
-<h4>introduction</h4>
-<%= @user.introduction %>
-<%= link_to 'New', edit_user_path(@user), class: "btn btn-default" %>
-
-<h1>New book</h1>
-<%= form_for @book do |f| %>
-<h3>Title</h3>
-<%= f.text_field :title %>
-<h3>Opinion</h3>
-<%= f.text_area :body %>
-<h3>
-<%= f.submit 'Create Book' %>
-</h3>
-<% end %>
-	</div>
-
-<div class="col-lg-8">
+<div class="col-xs-3">
+<%= render 'users/form', user: @user, book: @book %>
+</div>
+<div class="col-xs-9">
   <table class="table table-striped">
 <h1>Books</h1>
 	<thead>
@@ -36,7 +17,9 @@
 		<% @books.each do |book| %>
 		<tr>
 			<td>
-				<%= attachment_image_tag @user, :profile_image,:fill,30,30,format: 'jpeg', fallback: "no_image.jpg", size:"40x40" %>
+				<%= link_to user_path(book.user) do %>
+				<%= attachment_image_tag book.user, :profile_image,:fill,30,30,format: 'jpeg', fallback: "no_image.jpg", size:"40x40" %>
+				<% end %>
 			</td>
 			<td>
 
@@ -49,6 +32,10 @@
 	  <% end %>
       </tbody>
     </table>
-  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>

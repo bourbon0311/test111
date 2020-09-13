@@ -6,17 +6,18 @@ before_action :authenticate_user!
     @user = current_user
   end
 
-  def create
+   def create
   	@book = Book.new(book_params)
     @book.user_id = current_user.id
 
     if @book.save
     flash[:notice] = "Book was successfully destroyed."
     redirect_to book_path(@book.id)
-  else
+   else
   	@books = Book.all
-  	render 'index'
-  end
+    @user = current_user
+  	render "index"
+   end
   end
 
   def show
@@ -26,6 +27,11 @@ before_action :authenticate_user!
 
   def edit
   	@book = Book.find(params[:id])
+    if @book.user == current_user
+      render "edit"
+    else
+      redirect_to books_path
+    end
   end
 
   def destroy

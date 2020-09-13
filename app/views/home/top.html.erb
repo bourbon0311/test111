@@ -1,0 +1,16 @@
+<div class="container">
+	<p><%= flash[:notice] %></p>
+<h1>welcome to <span class="glyphicon glyphicon-book" aria-hidden="true"></span>Bookers !!</h1>
+<p>In <span class="glyphicon glyphicon-book" aria-hidden="true"></span>Bookers,</p>
+
+<p>you can share and exchange your opinions , inpressions , and emotions</p>
+
+<p>about various books!</p>
+<div class="container" >
+
+<p class="text-center">
+ <%= link_to "Log in", new_user_session_path, class: "btn-info btn-lg btn-block" %>
+</p>
+<p class="text-center">
+ <%= link_to "Sign Up", new_user_registration_path, class: " btn-success btn-lg btn-block"  %>
+</p></div>

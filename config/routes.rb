@@ -1,16 +1,11 @@
-
 Rails.application.routes.draw do
-#delete '/books/:id' to: 'books#book_destroy' as: 'dest'
- #get '/' =>'homes#top'
- root 'homes#top'
- get '/homes/about' => 'homes#about'
-  resources :homes
+ get '/home/about'
  devise_for :users
-   devise_scope :user do
-    get '/users/sign_out' => 'devise/sessions#destroy'
-end
+ #delete '/books/:id' to: 'books#book_destroy' as: 'dest'
+ #get '/' =>'homes#top'
+ root 'home#top'
+  resources :homes
   resources :users
-
   	#get '/users/sign_out' => 'devise/sessions#destroy'
   resources :books
 

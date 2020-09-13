@@ -1,74 +1,56 @@
 <!DOCTYPE html>
 <html>
-  <head><%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %></head>
+<head><%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
         <!-- <div class="container"> -->
-            <div class="row">
-            <div class="col-lg-12" style="background-color: black;">
-    <body>
-      <header>
+<body>
+<header class="black"> 
+  <div class="container"> 
+    <nav class="nav navbar-nav navbar-left"> 
+      <span><p style="color:white">Bookers</p></span> 
+    </nav> 
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
 
-        <table>
-          <div class="containrt">
-      <div id="slidemenu">
-  <ul>
-    <td><h3>Bookers</h3></td>
+                  <li>
+                    <%= link_to ' Home', user_path(current_user) ,class: "glyphicon glyphicon-home" %>
+                  </li>
+                  <li>
+                    <%= link_to ' Users', users_path ,class: "glyphicon glyphicon-user" %>
+                  </li>
+                  <li>
+                    <%= link_to ' Books', books_path ,class: "glyphicon glyphicon-book" %>
+                  </li>
+                  <li>
+                    <%= link_to ' logout',destroy_user_session_path ,class: "glyphicon glyphicon-log-out", method: :delete %>
+                  </li>
 
-    <% if user_signed_in? %>
-<div class="text-rigth">
-      <td class="">
-<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-        <%= link_to 'Home', user_path(current_user) %>
-      </td>
-      <td class="">
-        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-        <%= link_to 'Users', users_path %>
-      </td>
-      <td class="">
-        <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-      <%= link_to 'Books', books_path %>
-      </td>
-       <td class="">
-        <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
-        <%= link_to 'logout',destroy_user_session_path, method: :delete %>
-      </td>
-    <% else %>
-     <td class="">
-      <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-      <%= link_to 'Home', root_path %>
-    </td>
-    <td class="">
-      <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
-    <%= link_to 'About', homes_about_path %>
-    </td>
-
-      <td class="">
-        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-        <%= link_to "sing up", new_user_registration_path %>
-      </td>
-      <td class="">
-        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-        <%= link_to "login", new_user_session_path %>
-      </td></p></div>
-    <% end %>
-  </ul>
-  </table>
-
-</header>
+                <% else %>
+                  <li>
+                    <%= link_to ' Home', root_path ,class: "glyphicon glyphicon-home"%>
+                  </li>
+                  <li>
+                    <%= link_to ' About', home_about_path ,class: "glyphicon glyphicon-link" %>
+                  </li>
+                  <li>
+                    <%= link_to " sign up", new_user_registration_path ,class: "glyphicon glyphicon-edit" %>
+                  </li>
+                  <li>
+                    <%= link_to " login", new_user_session_path ,class: "glyphicon glyphicon-log-in" %>
+                  </li>
+                <% end %>
+      </ul>
+    </nav>
   </div>
-</div>
+</header>
 
 <!-- </div> -->
-<div class="container">
-<main>
 
     <%= yield %>
-  </main>
-  </div>
-  </body>
-
+</body>
 </html>

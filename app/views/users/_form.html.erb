@@ -1,0 +1,39 @@
+
+<p><%= flash[:notice] %></p>
+
+<h1>User info</h1>
+  <%= attachment_image_tag user, :profile_image,:fill,60,60,format: 'jpeg', fallback: "no_image.jpg" %>
+
+<table class="table">
+    <tr>
+		<td><h5>name</h5></td>
+		<td><h5><%= user.name %></h5></td>
+	</tr>
+	<tr>
+		<td><h5>introduction</h5></td>
+		<td><h5><%= user.introduction %></h5></td>
+	</tr>
+</table>
+	       <p>
+			<%= link_to '',edit_user_path(user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_cuurent_user" %>
+		    </p>
+
+<h2>New book</h2>
+<%= form_for(book) do |f| %>
+<% if @book.errors.any? %>
+      <%= @book.errors.count %>
+      個のerrorがあります<br>
+
+      <% @book.errors.full_messages.each do |msg| %>
+      <%= msg %><br>
+      <% end %>
+      <% end %>
+
+<h3>Title</h3>
+<%= f.text_field :title %>
+<h3>Opinion</h3>
+<%= f.text_area :body %>
+<h3>
+<input class="btn btn-default btn-primary btn-block" type="submit" value="Create Book">
+</h3>
+<% end %>
