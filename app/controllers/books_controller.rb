@@ -11,7 +11,7 @@ before_action :authenticate_user!
     @book.user_id = current_user.id
 
     if @book.save
-    flash[:notice] = "Book was successfully destroyed."
+    flash[:notice] = "Book was successfully."
     redirect_to book_path(@book.id)
    else
   	@books = Book.all
@@ -22,6 +22,7 @@ before_action :authenticate_user!
 
   def show
   	@book = Book.find(params[:id])
+    @book_new = Book.new
     @user = @book.user
   end
 

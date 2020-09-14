@@ -2,7 +2,7 @@
 <p><%= flash[:notice] %></p>
 
 <h1>User info</h1>
-  <%= attachment_image_tag user, :profile_image,:fill,60,60,format: 'jpeg', fallback: "no_image.jpg" %>
+  <%= attachment_image_tag user, :profile_image,:fill,100,100,format: 'jpeg', fallback: "no_image.jpg" %>
 
 <table class="table">
     <tr>
@@ -32,7 +32,8 @@
 <h3>Title</h3>
 <%= f.text_field :title %>
 <h3>Opinion</h3>
-<%= f.text_area :body %>
+<%= f.text_area :body, class: "col-xs-12 formarea" %>
+
 <h3>
 <input class="btn btn-default btn-primary btn-block" type="submit" value="Create Book">
 </h3>

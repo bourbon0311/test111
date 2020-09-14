@@ -12,10 +12,11 @@
       <% end %>
 
 <h4>Title</h4>
-<%= f.text_field :title %>
+<%= f.text_field :title, class: "col-xs-12" %>
 
 <h4>Opinion</h4>
-<%= f.text_area :body %>
+<%= f.text_area :body, class: "col-xs-12 formarea" %>
+
 
 <input class="btn btn-default btn-primary btn-block" type="submit" value="Update Book">
 <% end %>

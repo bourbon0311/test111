@@ -2,11 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-input[type="field"] {
-	width: 100%;
-	height: px;
-}
-input[type="area"] {
-	width: 100%;
-	height: 40px;
+.formarea {
+	margin: 20px 0;
 }

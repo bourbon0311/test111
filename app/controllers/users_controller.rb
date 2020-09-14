@@ -26,7 +26,7 @@ def index
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-       flash[:notice] = "User was successfully destroyed."
+       flash[:notice] = "User was successfully."
        redirect_to user_path
     else
       render "edit"
